@@ -21,7 +21,7 @@ class Mammal:
         self.__race = race
         self.__info = info
 
-    # set and get methods
+    # get and set methods
     def get_name(self):
         return self.__name
 
@@ -70,6 +70,7 @@ class Dog(Mammal):
         super().__init__(name, birthdate, weight, race, info)
         Dog._dog_count += 1
 
+    # destructor
     def __del__(self):
         Dog._dog_count -= 1
         print("A dog died.")
