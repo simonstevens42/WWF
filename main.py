@@ -1,21 +1,7 @@
 from mammal import *
 from vehicle import *
-import sqlite3
 
 print("Starting simulation...")
-
-connection = sqlite3.connect("simulation.db")
-print(connection.total_changes)
-
-cursor = connection.cursor()
-cursor.execute("CREATE TABLE IF NOT EXISTS car (type TEXT PRIMARY KEY, currentSpeed, doors)")
-cursor.execute("SELECT COUNT(*) FROM car")
-car_id = 0
-rows = cursor.fetchall()
-car1 = Car("Hyundai i30", 5)
-cursor.execute(f"INSERT OR IGNORE INTO car (type, currentSpeed, doors) VALUES ('{car1.get_type_name()}','{car1.get_current_speed()}', '{car1.get_door_count()}')")
-connection.commit()
-
 
 cat1 = Cat("Whiskers", datetime.date(2019, 5, 15), 5.5, "Persian", "Likes to sleep a lot")
 dog1 = Dog("Buddy", datetime.date(2018, 7, 20), 10.2, "Golden Retriever", "Loves playing fetch")
@@ -38,38 +24,26 @@ del dog1
 print("Dogs in the population:", Dog.get_dog_population())
 print("Cats in the population:", Cat.get_cat_population())
 
-# Check the count of vehicle
-print("Number of vehicle:", Vehicle.vehicle_count())
+# Check the count of vehicles
+print("Count of the vehicles:", Vehicle.vehicle_count())
 
+car1 = CombustionCar("Porsche 911 GT3", 120000, 3, "gasoline", 510, 12.9, 64)
+car2 = ElectricCar("Tesla Model S", 80000, 5, "electric", 1020, 18.7, 250)
 
-car2 = Car("Opel Adam", 3)
-bicycle1 = Bicycle("KTM 1290")
-bicycle2 = Bicycle("Honda CB125R")
+print(car1.get_fuel_level())
+car1.refuel(33)
+car1.refuel(32)
+print(car1.get_fuel_level())
 
-# Check the count got vehicle
-print("Number of vehicle:", Vehicle.vehicle_count())
+print(car2.get_battery_level())
+car2.recharge("Type-3", 1, 126)
+car2.recharge("Type-1", 5, 126)
+car2.recharge("Type-1", 2, 126)
+car2.recharge("Type-1", 2, 125)
+print(car2.get_battery_level())
 
-# Check car methods
-car1.start()
-car1.accelerate(199)
-car1.decelerate(200)
-print(car1.get_current_speed())
-car1.accelerate(2)
-car1.decelerate(50)
-car1.stop()
-print(car1.get_current_speed())
+print("Count of the vehicles:", Vehicle.vehicle_count())
 
-# Check bicycle methods
-bicycle1.ring(5)
-
-# Remove vehicle
 del car1
 del car2
-del bicycle1
-del bicycle2
-
-# Check the count got vehicle
-print("Number of vehicle:", Vehicle.vehicle_count())
-
-connection.close()
 print("End simulation...")

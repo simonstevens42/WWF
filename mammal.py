@@ -2,11 +2,6 @@ import datetime
 
 
 class Mammal:
-    name: str
-    birthdate: datetime
-    weight: float
-    race: str
-    info: str
 
     # constructor
     def __init__(self, name, birthdate, weight, race, info):
@@ -63,36 +58,36 @@ class Mammal:
 
 
 class Dog(Mammal):
-    _dog_count: int = 0
+    __dog_count: int = 0
 
     # constructor
     def __init__(self, name, birthdate, weight, race, info):
         super().__init__(name, birthdate, weight, race, info)
-        Dog._dog_count += 1
+        Dog.__dog_count += 1
 
     # destructor
     def __del__(self):
-        Dog._dog_count -= 1
+        Dog.__dog_count -= 1
         print("A dog died.")
 
     @staticmethod
     def get_dog_population():
-        return Dog._dog_count
+        return Dog.__dog_count
 
 
 class Cat(Mammal):
-    _cat_count: int = 0
+    __cat_count: int = 0
 
     # constructor
     def __init__(self, name, birthdate, weight, race, info):
         super().__init__(name, birthdate, weight, race, info)
-        Cat._cat_count += 1
+        Cat.__cat_count += 1
 
     # destructor
     def __del__(self):
-        Cat._cat_count -= 1
+        Cat.__cat_count -= 1
         print("A cat died.")
 
     @staticmethod
     def get_cat_population():
-        return Cat._cat_count
+        return Cat.__cat_count
