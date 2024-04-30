@@ -1,5 +1,6 @@
 from mammal import *
 from vehicle import *
+import datetime
 
 print("Starting simulation...")
 

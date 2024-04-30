@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from logger import *
 
 
 class Vehicle(ABC):
@@ -146,7 +147,8 @@ class CombustionCar(Car):
         if combined_fuel <= self.get_tank_capacity():
             self.set_fuel_level(combined_fuel)
         else:
-            print("You can't overfill your tank.")
+            log_msg("You can't overfill your tank.", "WARNING")
+
 
 
 class ElectricCar(Car):
