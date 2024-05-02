@@ -23,3 +23,13 @@ WARNING:logger:2024-05-02 09:06:27.075027 - D:\DEV\WWF\vehicle.py - You can't ov
 INFO:logger:2024-05-02 09:06:27.076035 - D:\DEV\WWF\vehicle.py - Successfully charged
 INFO:logger:2024-05-02 09:06:27.076542 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
 INFO:logger:2024-05-02 09:06:27.077548 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
+INFO:logger:2024-05-02 09:16:59.752646 - D:\DEV\WWF\mammal.py - A cat died.
+INFO:logger:2024-05-02 09:16:59.753647 - D:\DEV\WWF\mammal.py - A dog died.
+WARNING:logger:2024-05-02 09:16:59.754646 - D:\DEV\WWF\vehicle.py - You can't overfill your tank.
+INFO:logger:2024-05-02 09:16:59.755646 - D:\DEV\WWF\vehicle.py - Successful refueling.
+WARNING:logger:2024-05-02 09:16:59.755646 - D:\DEV\WWF\vehicle.py - No valid plug.
+WARNING:logger:2024-05-02 09:16:59.756646 - D:\DEV\WWF\vehicle.py - No valid charging mode.
+WARNING:logger:2024-05-02 09:16:59.756646 - D:\DEV\WWF\vehicle.py - You can't overload your battery.
+INFO:logger:2024-05-02 09:16:59.757646 - D:\DEV\WWF\vehicle.py - Successfully charged
+INFO:logger:2024-05-02 09:16:59.758662 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
+INFO:logger:2024-05-02 09:16:59.759648 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
