@@ -55,7 +55,7 @@ class Mammal:
 
     # shows all attributs without race and info
     def show_data(self):
-        return f"- Name:{self.__name}\n- Birthdate:{self.__birthdate} ({self.get_age()})\n- Weight:{self.__weight}"
+        return F"- Name:{self.__name}\n- Birthdate:{self.__birthdate} ({self.get_age()})\n- Weight:{self.__weight}"
 
 
 class Dog(Mammal):
@@ -69,7 +69,7 @@ class Dog(Mammal):
     # destructor
     def __del__(self):
         Dog.__dog_count -= 1
-        print("A dog died.")
+        log_msg("A dog died.", "INFO")
 
     @staticmethod
     def get_dog_population():
@@ -87,7 +87,7 @@ class Cat(Mammal):
     # destructor
     def __del__(self):
         Cat.__cat_count -= 1
-        print("A cat died.")
+        log_msg("A cat died.", "INFO")
 
     @staticmethod
     def get_cat_population():

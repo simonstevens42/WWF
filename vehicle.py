@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+
+import logger
 from logger import *
 
 
@@ -13,12 +15,13 @@ class Vehicle(ABC):
             self.__price = price
             Vehicle.__vehicle_count += 1
         else:
+            log_msg("Maximum number of 100 vehicles reached!", "CRITICAL")
             raise RuntimeError("Maximum number of 100 vehicles reached!")
 
     # destructor
     def __del__(self):
         Vehicle.__vehicle_count -= 1
-        print("A vehicle has disappeared.")
+        log_msg("A vehicle has disappeared.", "INFO")
 
     # get and set methods
     def get_model(self):
@@ -59,6 +62,7 @@ class Car(Vehicle):
         if "gasoline" in fuel or "diesel" in fuel or "electric" in fuel:
             self.__fuel = fuel
         else:
+            log_msg("No valid fuel has been selected.", "CRITICAL")
             raise ValueError("No valid fuel has been selected.")
 
     # get and set methods
@@ -83,27 +87,27 @@ class Car(Vehicle):
     # implementation of abstract methods
     def stop(self):
         self.set_current_speed(0)
-        print("Car engine stops.")
+        log_msg("Car engine stops.", "INFO")
 
     def start(self):
-        print("Car engine starts.")
+        log_msg("Car engine starts.", "INFO")
 
     # methods
     def accelerate(self, accelerate):
         new_current_speed = self.get_current_speed() + accelerate
         if new_current_speed < 200:
             self.set_current_speed(new_current_speed)
-            print(f"The car accelerates to {new_current_speed}km/h")
+            log_msg(F"The car accelerates to {new_current_speed}km/h", "INFO")
         else:
-            print("The acceleration failed.")
+            log_msg("The acceleration failed.", "WARNING")
 
     def decelerate(self, decelerate):
         new_current_speed = self.get_current_speed() - decelerate
         if new_current_speed >= 0:
             self.set_current_speed(new_current_speed)
-            print(f"The car decelerates to {new_current_speed}km/h")
+            log_msg(F"The car decelerates to {new_current_speed}km/h", "INFO")
         else:
-            print("The deceleration failed.")
+            log_msg("The deceleration failed.", "WARNING")
 
     @abstractmethod
     def eco_friendly(self):
@@ -139,16 +143,16 @@ class CombustionCar(Car):
 
     # implementation of abstract methods
     def eco_friendly(self):
-        print(F"{self.get_fuel()} engines have a poor environmental balance.")
+        log_msg(F"{self.get_fuel()} engines have a poor environmental balance.", "INFO")
 
     # methods
     def refuel(self, fuel):
         combined_fuel = self.get_fuel_level() + fuel
         if combined_fuel <= self.get_tank_capacity():
             self.set_fuel_level(combined_fuel)
+            log_msg("Successful refueling.", "INFO")
         else:
             log_msg("You can't overfill your tank.", "WARNING")
-
 
 
 class ElectricCar(Car):
@@ -180,7 +184,7 @@ class ElectricCar(Car):
 
     # implementation of abstract methods
     def eco_friendly(self):
-        print(F"{self.get_fuel()} engines have a good environmental balance.")
+        log_msg(F"{self.get_fuel()} engines have a good environmental balance.", "INFO")
 
     # methods
     def recharge(self, plug, mode, charge):
@@ -189,12 +193,13 @@ class ElectricCar(Car):
             if 0 < mode < 5:
                 if combined_charge <= self.get_battery_capacity():
                     self.set_battery_level(combined_charge)
+                    log_msg("Successfully charged", "INFO")
                 else:
-                    print("You can't overload your battery.")
+                    log_msg("You can't overload your battery.", "WARNING")
             else:
-                print("No valid charging mode.")
+                log_msg("No valid charging mode.", "WARNING")
         else:
-            print("No valid plug.")
+            log_msg("No valid plug.", "WARNING")
 
 
 class Bicycle(Vehicle):
@@ -205,15 +210,15 @@ class Bicycle(Vehicle):
     # implementation of abstract methods
     def stop(self):
         self.set_current_speed(0)
-        print("Bicycle engine stops.")
+        log_msg("Bicycle engine stops.", "INFO")
 
     def start(self):
-        print("Bicycle engine starts.")
+        log_msg("Bicycle engine starts.", "INFO")
 
     # methods
     @staticmethod
     def ring(time: int):
         i = 0
         while i < time:
-            print("RING RING RING")
+            log_msg("RING RING RING", "INFO")
             i += 1
