@@ -5,7 +5,7 @@ import inspect
 logging.basicConfig(filename='logfile.log', encoding='utf-8', level=logging.INFO)
 
 
-def log_msg(msg, level):
+def log_msg(msg, level) -> None:
     caller = inspect.stack()[1].filename
     logger = logging.getLogger(__name__)
     msg_strg = F"{datetime.now()} - {caller} - {msg}"
