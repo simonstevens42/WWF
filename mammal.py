@@ -1,5 +1,5 @@
-from logger import *
 import datetime
+from logger import log_msg
 
 
 class Mammal:
@@ -48,6 +48,7 @@ class Mammal:
     def set_info(self, info) -> None:
         self.__info = info
 
+    # methods
     def get_age(self) -> int:
         today = datetime.date.today()
         year = today.year - self.__birthdate.year
@@ -93,3 +94,65 @@ class Cat(Mammal):
     @staticmethod
     def get_cat_population() -> int:
         return Cat.__cat_count
+
+
+class Human(Mammal):
+    __id_count: int = 0
+
+    # constructor
+    def __init__(self, name: str, birthdate: datetime, weight: float, race: str, info: str):
+        super().__init__(name, birthdate, weight, race, info)
+        self.__id = Human.__id_count
+        Human.__id_count += 1
+
+    # methods
+    @staticmethod
+    def get_id_count() -> int:
+        return Human.__id_count
+
+
+class Staff:
+    __staff_id_count: int = 0
+
+    # constructor
+    def __init__(self, human: Human, job: str):
+        self.__human = human
+        self.__job = job
+        self.__appointments = []
+        Staff.__staff_id_count += 1
+        self.__staff_id = Staff.__staff_id_count
+
+    # get and set Methods
+    def get_human(self) -> Human:
+        return self.__human
+
+    def set_human(self, human: Human) -> None:
+        self.__human = human
+
+    def get_job(self) -> str:
+        return self.__job
+
+    def set_job(self, job: str) -> None:
+        self.__job = job
+
+    def get_appointments(self) -> list:
+        return self.__appointments
+
+    def set_appointments(self, appointment) -> None:
+        self.__appointments.append(appointment)
+
+    def get_staff_id(self) -> int:
+        return self.__staff_id
+
+    def set_staff_id(self, staff_id) -> None:
+        self.__staff_id = staff_id
+
+    # methods
+    @staticmethod
+    def alert(participants: list, event: str) -> None:
+        for participant in participants:
+            log_msg(F"[!]Reminder for {event} for {participant.get_name()}[!]", "INFO")
+
+    @staticmethod
+    def get_staff_id_count() -> int:
+        return Staff.__staff_id_count

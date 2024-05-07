@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from logger import *
+from logger import log_msg
 
 
 class Vehicle(ABC):

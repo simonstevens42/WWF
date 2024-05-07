@@ -1,6 +1,6 @@
 import logging
-from datetime import datetime
 import inspect
+from datetime import datetime
 
 logging.basicConfig(filename='logfile.log', encoding='utf-8', level=logging.INFO)
 

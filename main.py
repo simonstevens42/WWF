@@ -1,11 +1,12 @@
-from mammal import *
-from vehicle import *
 import datetime
+from mammal import Cat, Dog, Human, Staff
+from vehicle import Vehicle, CombustionCar, ElectricCar
+from events import Appointment
 
 print("Starting simulation...")
 
-cat1 = Cat("Whiskers", datetime.date(2019, 5, 15), 5.5, "Persian", "Likes to sleep a lot")
-dog1 = Dog("Buddy", datetime.date(2018, 7, 20), 10.2, "Golden Retriever", "Loves playing fetch")
+cat1 = Cat("Whiskers", datetime.datetime(2019, 5, 15), 5.5, "Persian", "Likes to sleep a lot")
+dog1 = Dog("Buddy", datetime.datetime(2018, 7, 20), 10.2, "Golden Retriever", "Loves playing fetch")
 
 # Display the data of the cat and the dog
 print("Cat data:")
@@ -47,4 +48,21 @@ print("Count of the vehicles:", Vehicle.vehicle_count())
 
 del car1
 del car2
+
+print("Count of the Human:", Human.get_id_count())
+human1 = Human("Albert Einstein", datetime.datetime(1879, 3, 13), 85, "Human", "He is relatively.")
+print("Count of the Human:", Human.get_id_count())
+print("Count of the Staff:", Staff.get_staff_id_count())
+staff1 = Staff(human1, "Physicist")
+print("Count of the Staff:", Staff.get_staff_id_count())
+event1 = Appointment(datetime.datetime(1905, 6, 30), "Proving the theory of relativity")
+print("Participants:", event1.get_participants())
+event1.add_participant(human1)
+print("Participants:", event1.get_participants())
+event1.inform_participants()
+
+del event1
+del staff1
+del human1
+
 print("End simulation...")

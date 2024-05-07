@@ -1,1 +1,13 @@
-
+INFO:logger:2024-05-07 12:22:57.035428 - D:\DEV\WWF\mammal.py - A cat died.
+INFO:logger:2024-05-07 12:22:57.036427 - D:\DEV\WWF\mammal.py - A dog died.
+WARNING:logger:2024-05-07 12:22:57.037506 - D:\DEV\WWF\vehicle.py - You can't overfill your tank.
+INFO:logger:2024-05-07 12:22:57.038672 - D:\DEV\WWF\vehicle.py - Successful refueling.
+WARNING:logger:2024-05-07 12:22:57.039514 - D:\DEV\WWF\vehicle.py - No valid plug.
+WARNING:logger:2024-05-07 12:22:57.040512 - D:\DEV\WWF\vehicle.py - No valid charging mode.
+WARNING:logger:2024-05-07 12:22:57.041516 - D:\DEV\WWF\vehicle.py - You can't overload your battery.
+INFO:logger:2024-05-07 12:22:57.042514 - D:\DEV\WWF\vehicle.py - Successfully charged
+INFO:logger:2024-05-07 12:22:57.043514 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
+INFO:logger:2024-05-07 12:22:57.044514 - D:\DEV\WWF\vehicle.py - A vehicle has disappeared.
+INFO:logger:2024-05-07 12:22:57.046513 - D:\DEV\WWF\events.py - New participant added.
+INFO:logger:2024-05-07 12:22:57.047025 - D:\DEV\WWF\events.py - Alert participants
+INFO:logger:2024-05-07 12:22:57.049033 - D:\DEV\WWF\mammal.py - [!]Reminder for Proving the theory of relativity for Albert Einstein[!]
